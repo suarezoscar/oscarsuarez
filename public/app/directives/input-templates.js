@@ -12,15 +12,10 @@ angular.module('inputTemplates', [])
                     size: '@',
                     icon: '@'
                 },
-                link: function () {
-                    $(document).ready(function () {
-                        Materialize.updateTextFields();
-                    });
-                },
                 template: '<div class="input-field col {{size}}">' +
                 '<i class="material-icons prefix">{{icon}}</i>' +
                 '<input id="{{idfor}}" type="{{type}}" class="validate" ng-model="model">' +
-                '<label class="active" for="{{idfor}}">{{label}}</label>' +
+                '<label for="{{idfor}}">{{label}}</label>' +
                 '</div>'
             }
         })
@@ -30,10 +25,33 @@ angular.module('inputTemplates', [])
                 restrict: 'E',
                 link: function () {
                     $(document).ready(function () {
-                        Materialize.updateTextFields();
                         $('select').material_select();
                         $('.parallax').parallax();
+
+                        // Text based inputs
+                        var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=tel], input[type=number], textarea';
+
+                        // Add active if value was embedded in HTML
+                        $(document).on('change', input_selector, function () {
+                            if ($(this).val().length !== 0) {
+                                $(this).siblings('label, i').addClass('active');
+                            }
+                        });
+
+                        // Add active if Form auto complete was used
+                        $(document).on('change', input_selector, function () {
+                            if ($(this).val().length !== 0) {
+                                $(this).siblings('label, i').addClass('active');
+                            }
+                        })
+
+                        // Add active when element has focus
+                        $(document).on('focus', input_selector, function () {
+                            $(this).siblings('label, i').addClass('active');
+                        });
+                        Materialize.updateTextFields();
                     });
+
                 },
             }
         })
@@ -54,7 +72,7 @@ angular.module('inputTemplates', [])
                 template: '<div class="input-field col {{size}}">' +
                 '<i class="material-icons prefix">{{icon}}</i>' +
                 '<textarea id="{{idfor}}" type="{{type}}" class="validate materialize-textarea" ng-model="model"></textarea>' +
-                '<label class="active" for="{{idfor}}">{{label}}</label>' +
+                '<label for="{{idfor}}">{{label}}</label>' +
                 '</div>'
             }
         }).directive('myButton',
@@ -118,7 +136,7 @@ angular.module('inputTemplates', [])
             template: '<div class="input-field col {{size}}">' +
             '<i class="material-icons prefix">{{icon}}</i>' +
             '<input id="{{idfor}}" type="text" class="datepicker" ng-model="model">' +
-            '<label class="active" for="{{idfor}}">{{label}}</label>' +
+            '<label for="{{idfor}}">{{label}}</label>' +
             '</div>'
         }
     });
