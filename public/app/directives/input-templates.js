@@ -25,34 +25,15 @@ angular.module('inputTemplates', [])
                 restrict: 'E',
                 link: function () {
                     $(document).ready(function () {
-                        $('select').material_select();
-                        $('.parallax').parallax();
-
-                        // Text based inputs
-                        var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=tel], input[type=number], textarea';
-
-                        // Add active if value was embedded in HTML
-                        $(document).on('change', input_selector, function () {
-                            if ($(this).val().length !== 0) {
-                                $(this).siblings('label, i').addClass('active');
-                            }
-                        });
-
-                        // Add active if Form auto complete was used
-                        $(document).on('change', input_selector, function () {
-                            if ($(this).val().length !== 0) {
-                                $(this).siblings('label, i').addClass('active');
-                            }
-                        })
-
-                        // Add active when element has focus
-                        $(document).on('focus', input_selector, function () {
-                            $(this).siblings('label, i').addClass('active');
-                        });
-                        Materialize.updateTextFields();
-                    });
-
-                },
+                            $('select').material_select();
+                            $('.parallax').parallax();
+                            $('input,textarea').each(function () {
+                                var forname = $(this).attr('id');
+                                $("label[for=" + forname + "]").addClass('active')
+                            });
+                        }
+                    )
+                }
             }
         })
     .directive('myTextarea',
