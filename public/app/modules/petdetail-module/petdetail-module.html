@@ -8,9 +8,9 @@
         <hr>
     </div>
     <div class="row">
-        <my-input data-size="s6" data-idfor="chipNumber" data-type="text" data-model="pet.chipNumber"
+        <my-input data-size="s12 m6 l6" data-idfor="chipNumber" data-type="text" data-model="pet.chipNumber"
                   data-label="Número de chip"/>
-        <my-input data-size="s6" data-idfor="name" data-type="text" data-model="pet.name" data-label="Nombre"/>
+        <my-input data-size="s12 m6 l6" data-idfor="name" data-type="text" data-model="pet.name" data-label="Nombre"/>
     </div>
     <div class="row">
         <div class="input-field col s12 m6 l6">
@@ -24,21 +24,23 @@
 
     </div>
     <div class="row">
-        <my-input data-size="s6" data-idfor="picUrl" data-type="text" data-model="pet.picUrl"
+        <my-input data-size="s12 m6 l6" data-idfor="picUrl" data-type="text" data-model="pet.picUrl"
                   data-label="Url de la imagen"/>
 
-        <my-input data-size="s6" data-idfor="race" data-type="text" data-model="pet.race" data-label="Raza"/>
+        <my-input data-size="s12 m6 l6" data-idfor="race" data-type="text" data-model="pet.race" data-label="Raza"/>
     </div>
-    <div class="row"> <label>Sexo</label>
-        <div class="col s6 l6 m6 left-align" id="radiobuttons">
-            <i class="material-icons prefix">icon</i>
 
-            <input name="radio_sex" type="radio" id="radio_male" value="Macho"/><label for="radio_male">Macho</label>
-            <input name="radio_sex" type="radio" id="radio_female" value="Hembra"/>
-            <label for="radio_female">Hembra</label>
-        </div>
-        <my-textarea data-size="s6" data-idfor="description" data-type="text" data-model="pet.description"
-                     data-label="Descripción"/>
+    <my-textarea data-size="s12 m6 l6" data-idfor="description" data-type="text" data-model="pet.description"
+                 data-label="Descripción"/>
+
+    <div class="col s12 l6 m6 left-align" id="radiobuttons">
+        <br/>
+        <i class="material-icons prefix">icon</i>
+        <label>Sexo</label>
+        <input name="radio_sex" type="radio" id="radio_male" value="Macho"/><label for="radio_male">Macho</label>
+        <input name="radio_sex" type="radio" id="radio_female" value="Hembra"/>
+        <label for="radio_female">Hembra</label>
+        <br/>
     </div>
 
     <my-button ng-if="!action" data-size="large" data-color="orange waves-effect waves-light" data-icon="save"
